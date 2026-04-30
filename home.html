@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rise Forge Works | Software Studio</title>
+    <meta name="description" content="Rise Forge Works builds Android-first software products with privacy-focused engineering and production-quality delivery.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #06080f;
+            --panel: #0c1528;
+            --panel-2: #111f37;
+            --text: #e6edf9;
+            --muted: #9baecc;
+            --line: #223453;
+            --accent: #4dc9f5;
+            --accent-2: #4f7bff;
+            --success: #5ef0bd;
+        }
+
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            font-family: "Source Sans 3", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 10% -10%, #1a387a66 20%, transparent 60%),
+                radial-gradient(circle at 85% 0%, #0d455366 20%, transparent 52%),
+                var(--bg);
+        }
+
+        .container {
+            width: min(1160px, calc(100% - 2rem));
+            margin: 0 auto;
+        }
+
+        .nav-wrap {
+            position: sticky;
+            top: 1rem;
+            z-index: 20;
+            margin-top: 1rem;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            background: #081224d4;
+            backdrop-filter: blur(8px);
+        }
+
+        .brand {
+            font-family: "Sora", sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            font-size: 1.15rem;
+            color: #f3f8ff;
+        }
+
+        .brand b {
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.93rem;
+        }
+
+        .nav-links a:hover { color: #fff; }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            border: 1px solid transparent;
+            border-radius: 11px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 0.68rem 1rem;
+            transition: 180ms ease;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background: linear-gradient(90deg, #2274e8, #4f7bff);
+            border-color: #2d67d8;
+            box-shadow: 0 14px 34px #2d67d84d;
+        }
+
+        .btn-primary:hover { transform: translateY(-1px); filter: brightness(1.08); }
+
+        .btn-secondary {
+            color: var(--text);
+            border-color: #2d4366;
+            background: #0e1b32;
+        }
+
+        .btn-secondary:hover { border-color: #456698; }
+
+        .hero {
+            padding: 4.5rem 0 2.8rem;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 1.2rem;
+            align-items: stretch;
+        }
+
+        .hero-card, .panel {
+            border: 1px solid var(--line);
+            background: linear-gradient(150deg, #0e1930, #091123);
+            border-radius: 20px;
+        }
+
+        .hero-card {
+            padding: 2.1rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-card::after {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border-radius: 100%;
+            background: radial-gradient(circle, #4dc9f544 0%, transparent 70%);
+            right: -60px;
+            top: -50px;
+            animation: drift 6s ease-in-out infinite;
+        }
+
+        @keyframes drift {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(16px); }
+        }
+
+        .eyebrow {
+            display: inline-block;
+            font-family: "Sora", sans-serif;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 0.72rem;
+            letter-spacing: 0.14em;
+            color: #95acd2;
+            margin-bottom: 1rem;
+        }
+
+        h1, h2, h3 {
+            font-family: "Sora", sans-serif;
+            letter-spacing: -0.04em;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 4.2vw, 3.7rem);
+            line-height: 1.06;
+            margin-bottom: 0.9rem;
+        }
+
+        .hero-copy {
+            color: #aec0de;
+            font-size: 1.1rem;
+            max-width: 57ch;
+            margin-bottom: 1.3rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.8rem;
+        }
+
+        .metric {
+            padding: 1rem;
+            border: 1px solid #253a5b;
+            background: linear-gradient(180deg, #111f3a, #101a2f);
+            border-radius: 16px;
+        }
+
+        .metric .kpi {
+            font-family: "Sora", sans-serif;
+            font-weight: 700;
+            font-size: 1.55rem;
+            color: #f8fbff;
+            margin-bottom: 0.2rem;
+        }
+
+        .metric p {
+            margin: 0;
+            color: #9eb3d8;
+            font-size: 0.95rem;
+        }
+
+        .section {
+            padding: 1rem 0 0.8rem;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .section-title p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.97rem;
+            max-width: 58ch;
+        }
+
+        .cards-3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.85rem;
+        }
+
+        .cards-2 {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.85rem;
+        }
+
+        .card {
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background: linear-gradient(180deg, var(--panel), #0b1629);
+            padding: 1.1rem;
+        }
+
+        .card h3 {
+            font-size: 1.12rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            margin: 0 0 0.8rem;
+            color: #afc0dc;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            border-radius: 999px;
+            border: 1px solid #2d4367;
+            background: #0d1d36;
+            color: #bdd1f5;
+            font-size: 0.73rem;
+            font-weight: 700;
+            padding: 0.3rem 0.6rem;
+            margin-right: 0.35rem;
+            margin-bottom: 0.35rem;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+        }
+
+        .legal {
+            margin-top: 1rem;
+            border: 1px solid #25416a;
+            border-radius: 18px;
+            padding: 1rem;
+            background: linear-gradient(145deg, #0f223f, #0a1630);
+        }
+
+        .legal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+        }
+
+        .legal a {
+            text-decoration: none;
+            color: #d7e6ff;
+            border: 1px solid #355a8e;
+            border-radius: 12px;
+            padding: 0.8rem;
+            background: #102447;
+            font-weight: 700;
+        }
+
+        .legal a:hover {
+            background: #143263;
+            border-color: #4f7bff;
+        }
+
+        footer {
+            margin: 2.2rem 0 1.6rem;
+            padding-top: 1rem;
+            border-top: 1px solid #223453;
+            color: #90a5c7;
+            font-size: 0.92rem;
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 420ms ease, transform 420ms ease;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 980px) {
+            .hero { grid-template-columns: 1fr; }
+            .cards-3 { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 720px) {
+            nav { align-items: flex-start; flex-direction: column; }
+            .cards-3, .cards-2, .legal-grid { grid-template-columns: 1fr; }
+            .hero-card { padding: 1.4rem; }
+            h1 { font-size: clamp(1.8rem, 9vw, 2.6rem); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container nav-wrap reveal">
+        <nav>
+            <div class="brand">Rise Forge <b>Works</b></div>
+            <div class="nav-links">
+                <a href="#products">Products</a>
+                <a href="#services">Services</a>
+                <a href="#legal">Legal</a>
+                <a href="#contact">Contact</a>
+                <a class="btn btn-primary" href="#contact">Start Project</a>
+            </div>
+        </nav>
+    </div>
+
+    <main class="container">
+        <section class="hero reveal">
+            <article class="hero-card">
+                <span class="eyebrow">Android-First Software Studio</span>
+                <h1>Shipping resilient apps for focused teams.</h1>
+                <p class="hero-copy">
+                    Rise Forge Works designs and builds production software with clear architecture, reliable delivery cycles, and privacy-forward implementation.
+                </p>
+                <div class="hero-actions">
+                    <a href="#products" class="btn btn-primary">View Products</a>
+                </div>
+            </article>
+            <aside class="metrics">
+                <div class="metric panel">
+                    <div class="kpi">4.9/5</div>
+                    <p>internal QA release confidence score</p>
+                </div>
+                <div class="metric panel">
+                    <div class="kpi">99.95%</div>
+                    <p>build pipeline success across delivery branches</p>
+                </div>
+                <div class="metric panel">
+                    <div class="kpi">24h</div>
+                    <p>average response on support triage windows</p>
+                </div>
+            </aside>
+        </section>
+
+        <section id="products" class="section reveal">
+            <div class="section-title">
+                <h2>Products</h2>
+                <p>Focused products built for daily operational use, clean UX, and long-term maintainability.</p>
+            </div>
+            <div class="cards-3">
+                <article class="card">
+                    <h3>Luma Notes</h3>
+                    <p>Offline-first notes and checklist app built for speed and low-friction capture.</p>
+                    <span class="badge">Kotlin</span>
+                    <span class="badge">Jetpack Compose</span>
+                    <span class="badge">Privacy-First</span>
+                </article>
+                <article class="card">
+                    <h3>Forge Desk</h3>
+                    <p>Internal operations panel for release tracking, audit logs, and team workflows.</p>
+                    <span class="badge">Admin Console</span>
+                    <span class="badge">Automation</span>
+                </article>
+                <article class="card">
+                    <h3>Launchpad SDK</h3>
+                    <p>Reusable modules for account, consent, and runtime permission orchestration.</p>
+                    <span class="badge">Android SDK</span>
+                    <span class="badge">Reusable Core</span>
+                </article>
+            </div>
+        </section>
+
+        <section id="services" class="section reveal">
+            <div class="section-title">
+                <h2>Services</h2>
+                <p>Engagement options for teams who need strong architecture and predictable execution.</p>
+            </div>
+            <div class="cards-2">
+                <article class="card">
+                    <h3>Product Engineering</h3>
+                    <p>End-to-end delivery from scope and architecture to CI/CD, QA, and release management.</p>
+                </article>
+                <article class="card">
+                    <h3>Android Performance Tuning</h3>
+                    <p>Deep optimization for rendering, startup latency, memory pressure, and battery impact.</p>
+                </article>
+                <article class="card">
+                    <h3>Security and Privacy Hardening</h3>
+                    <p>Permission minimization, storage strategy review, and legal-page consistency for store readiness.</p>
+                </article>
+                <article class="card">
+                    <h3>Maintenance and Support</h3>
+                    <p>Structured patch cycle, release notes, hotfix strategy, and long-term technical ownership.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="legal" class="legal reveal">
+            <div class="section-title">
+                <h2>Legal</h2>
+                <p>Policy pages for current products and transparent compliance references.</p>
+            </div>
+            <div class="legal-grid">
+                <a href="https://twincreation.github.io/luma-notes/privacy.html">Luma Notes Privacy Policy</a>
+                <a href="https://twincreation.github.io/luma-notes/terms.html">Luma Notes Terms of Service</a>
+            </div>
+        </section>
+
+        <section id="contact" class="section reveal">
+            <div class="section-title">
+                <h2>Contact</h2>
+                <p>Discuss a new app, migration, or architecture cleanup.</p>
+            </div>
+            <div class="card">
+                <h3>Build With Rise Forge Works</h3>
+                <p>Email: <a href="mailto:rise.forge.worksstudio@gmail.com" style="color: var(--success); text-decoration: none;">rise.forge.worksstudio@gmail.com</a></p>
+                <p>Website: <a href="https://twincreation.github.io/RiseForge_Admin/Home.html" style="color: var(--success); text-decoration: none;">Rise Softwares</a></p>
+                <a class="btn btn-primary" href="mailto:rise.forge.worksstudio@gmail.com">Send Inquiry</a>
+            </div>
+        </section>
+
+        <footer>
+            <span>2026 Rise Forge Works. All rights reserved.</span>
+            <span>Built for desktop and mobile environments.</span>
+        </footer>
+    </main>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>
