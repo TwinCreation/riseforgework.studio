@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculators | Rise Forge Works</title>
+    <meta name="description" content="Free online age, EMI, SIP, GST, and percentage calculators from Rise Forge Works.">
+    <link rel="canonical" href="https://riseforgework.studio/calculators.html">
+    <style>
+        :root { --bg: #071018; --panel: #0d1b27; --panel-2: #122838; --text: #eef7fb; --muted: #abc0cc; --line: #28485a; --accent: #47c2a8; --accent-2: #58a7ff; --warn: #ffd166; }
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: var(--text); background: linear-gradient(140deg, #071018, #0b1724 55%, #102319); }
+        a { color: inherit; }
+        .container { width: min(1120px, calc(100% - 2rem)); margin: 0 auto; }
+        header { padding: 1rem 0 0.5rem; position: sticky; top: 0; z-index: 5; background: #071018e8; backdrop-filter: blur(8px); border-bottom: 1px solid #183141; }
+        nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+        .brand { display: inline-flex; align-items: center; gap: 0.6rem; font-weight: 800; text-decoration: none; font-size: 1.05rem; }
+        .brand img { width: 38px; height: 38px; border-radius: 8px; object-fit: contain; background: #fff; }
+        .nav-links { display: flex; gap: 0.75rem; flex-wrap: wrap; color: var(--muted); font-weight: 700; font-size: 0.94rem; }
+        .nav-links a { text-decoration: none; }
+        .nav-links a:hover { color: #fff; }
+        .hero { padding: 2.4rem 0 1.2rem; }
+        h1, h2, h3 { margin: 0; line-height: 1.1; }
+        h1 { font-size: clamp(2rem, 6vw, 4rem); max-width: 820px; }
+        .lead { color: var(--muted); font-size: 1.08rem; max-width: 740px; line-height: 1.6; }
+        .tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.2rem 0; }
+        .tabs button, .btn { border: 1px solid var(--line); background: #0d1d2a; color: var(--text); border-radius: 8px; padding: 0.68rem 0.88rem; font-weight: 800; cursor: pointer; text-decoration: none; }
+        .tabs button.active, .btn.primary { border-color: #55d6bd; background: #10372f; color: #f7fffc; }
+        .tool { display: none; grid-template-columns: minmax(0, 0.85fr) minmax(280px, 0.55fr); gap: 1rem; align-items: start; padding-bottom: 2rem; }
+        .tool.active { display: grid; }
+        .panel { border: 1px solid var(--line); background: linear-gradient(180deg, var(--panel), #0a1722); border-radius: 8px; padding: 1rem; }
+        .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.85rem; }
+        label { display: grid; gap: 0.35rem; color: var(--muted); font-weight: 700; }
+        input, select { width: 100%; border: 1px solid #31576c; background: #091723; color: var(--text); border-radius: 8px; padding: 0.72rem; font: inherit; }
+        .result { display: grid; gap: 0.75rem; }
+        .result-card { border: 1px solid #31576c; border-radius: 8px; background: #0e2330; padding: 0.9rem; }
+        .result-card span { display: block; color: var(--muted); font-size: 0.9rem; }
+        .result-card strong { display: block; font-size: 1.45rem; margin-top: 0.2rem; }
+        .note { color: var(--muted); line-height: 1.55; }
+        footer { border-top: 1px solid #183141; color: var(--muted); padding: 1.2rem 0 1.6rem; margin-top: 1rem; }
+        @media (max-width: 820px) { .tool.active { grid-template-columns: 1fr; } .grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a class="brand" href="/"><img src="Rise%20Forge%20Works.png" alt="Rise Forge Works logo"><span>Rise Forge Works</span></a>
+            <div class="nav-links">
+                <a href="/calculators.html">Calculators</a>
+                <a href="/android-tools.html">Android Tools</a>
+                <a href="/apps.html">Apps</a>
+                <a href="/blog.html">Blog</a>
+            </div>
+        </nav>
+    </header>
+    <main class="container">
+        <section class="hero">
+            <h1>Fast calculators for everyday planning.</h1>
+            <p class="lead">Use browser-based tools for age, loan EMI, SIP returns, GST, and percentage calculations. Values stay on your device.</p>
+            <div class="tabs" role="tablist" aria-label="Calculator tools">
+                <button class="active" data-tab="age">Age</button>
+                <button data-tab="emi">EMI</button>
+                <button data-tab="sip">SIP</button>
+                <button data-tab="gst">GST</button>
+                <button data-tab="percentage">Percentage</button>
+            </div>
+        </section>
+
+        <section class="tool active" id="age">
+            <div class="panel">
+                <h2>Age Calculator</h2>
+                <p class="note">Calculate exact age from a birth date to today or another date.</p>
+                <div class="grid">
+                    <label>Birth date <input id="birthDate" type="date"></label>
+                    <label>Calculate on <input id="ageDate" type="date"></label>
+                </div>
+            </div>
+            <aside class="panel result">
+                <div class="result-card"><span>Age</span><strong id="ageYears">-</strong></div>
+                <div class="result-card"><span>Total days</span><strong id="ageDays">-</strong></div>
+            </aside>
+        </section>
+
+        <section class="tool" id="emi">
+            <div class="panel">
+                <h2>EMI Calculator</h2>
+                <p class="note">Estimate monthly payment, total interest, and total payment for a reducing balance loan.</p>
+                <div class="grid">
+                    <label>Loan amount <input id="loanAmount" type="number" min="0" value="500000"></label>
+                    <label>Annual interest % <input id="loanRate" type="number" min="0" step="0.01" value="9.5"></label>
+                    <label>Tenure <input id="loanTenure" type="number" min="1" value="5"></label>
+                    <label>Tenure type <select id="loanTenureType"><option value="years">Years</option><option value="months">Months</option></select></label>
+                </div>
+            </div>
+            <aside class="panel result">
+                <div class="result-card"><span>Monthly EMI</span><strong id="emiMonthly">-</strong></div>
+                <div class="result-card"><span>Total interest</span><strong id="emiInterest">-</strong></div>
+                <div class="result-card"><span>Total payment</span><strong id="emiTotal">-</strong></div>
+            </aside>
+        </section>
+
+        <section class="tool" id="sip">
+            <div class="panel">
+                <h2>SIP Calculator</h2>
+                <p class="note">Project future value for monthly investments using expected annual returns.</p>
+                <div class="grid">
+                    <label>Monthly investment <input id="sipMonthlyInput" type="number" min="0" value="5000"></label>
+                    <label>Expected annual return % <input id="sipRate" type="number" min="0" step="0.01" value="12"></label>
+                    <label>Years <input id="sipYears" type="number" min="1" value="10"></label>
+                </div>
+            </div>
+            <aside class="panel result">
+                <div class="result-card"><span>Invested amount</span><strong id="sipInvested">-</strong></div>
+                <div class="result-card"><span>Estimated returns</span><strong id="sipReturns">-</strong></div>
+                <div class="result-card"><span>Future value</span><strong id="sipFuture">-</strong></div>
+            </aside>
+        </section>
+
+        <section class="tool" id="gst">
+            <div class="panel">
+                <h2>GST Calculator</h2>
+                <p class="note">Add or remove GST from an amount and split CGST/SGST for intrastate invoices.</p>
+                <div class="grid">
+                    <label>Amount <input id="gstAmount" type="number" min="0" value="1000"></label>
+                    <label>GST rate % <input id="gstRate" type="number" min="0" step="0.01" value="18"></label>
+                    <label>Mode <select id="gstMode"><option value="add">Add GST</option><option value="remove">Remove GST</option></select></label>
+                </div>
+            </div>
+            <aside class="panel result">
+                <div class="result-card"><span>Base amount</span><strong id="gstBase">-</strong></div>
+                <div class="result-card"><span>GST amount</span><strong id="gstTax">-</strong></div>
+                <div class="result-card"><span>Final amount</span><strong id="gstFinal">-</strong></div>
+                <div class="result-card"><span>CGST + SGST</span><strong id="gstSplit">-</strong></div>
+            </aside>
+        </section>
+
+        <section class="tool" id="percentage">
+            <div class="panel">
+                <h2>Percentage Calculator</h2>
+                <p class="note">Calculate percentages, percentage change, and value after increase or decrease.</p>
+                <div class="grid">
+                    <label>Value A <input id="pctA" type="number" value="20"></label>
+                    <label>Value B <input id="pctB" type="number" value="200"></label>
+                    <label>Operation <select id="pctMode"><option value="of">A is what % of B?</option><option value="change">% change from A to B</option><option value="increase">Increase B by A%</option><option value="decrease">Decrease B by A%</option></select></label>
+                </div>
+            </div>
+            <aside class="panel result">
+                <div class="result-card"><span>Result</span><strong id="pctResult">-</strong></div>
+            </aside>
+        </section>
+    </main>
+    <footer><div class="container">2026 Rise Forge Works. Calculations are estimates and should be verified for financial decisions.</div></footer>
+    <script>
+        const money = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 });
+        const number = new Intl.NumberFormat("en-IN", { maximumFractionDigits: 2 });
+        const today = new Date().toISOString().slice(0, 10);
+        ageDate.value = today;
+
+        document.querySelectorAll("[data-tab]").forEach((button) => {
+            button.addEventListener("click", () => {
+                document.querySelectorAll("[data-tab]").forEach((item) => item.classList.toggle("active", item === button));
+                document.querySelectorAll(".tool").forEach((tool) => tool.classList.toggle("active", tool.id === button.dataset.tab));
+            });
+        });
+
+        function value(id) { return Number(document.getElementById(id).value) || 0; }
+        function set(id, text) { document.getElementById(id).textContent = text; }
+
+        function calcAge() {
+            if (!birthDate.value || !ageDate.value) return;
+            const start = new Date(birthDate.value);
+            const end = new Date(ageDate.value);
+            if (end < start) return;
+            let years = end.getFullYear() - start.getFullYear();
+            let months = end.getMonth() - start.getMonth();
+            let days = end.getDate() - start.getDate();
+            if (days < 0) { months--; days += new Date(end.getFullYear(), end.getMonth(), 0).getDate(); }
+            if (months < 0) { years--; months += 12; }
+            set("ageYears", `${years} years, ${months} months, ${days} days`);
+            set("ageDays", number.format(Math.floor((end - start) / 86400000)));
+        }
+
+        function calcEmi() {
+            const principal = value("loanAmount");
+            const months = loanTenureType.value === "years" ? value("loanTenure") * 12 : value("loanTenure");
+            const monthlyRate = value("loanRate") / 12 / 100;
+            const emi = monthlyRate ? principal * monthlyRate * Math.pow(1 + monthlyRate, months) / (Math.pow(1 + monthlyRate, months) - 1) : principal / months;
+            const total = emi * months;
+            set("emiMonthly", money.format(emi || 0));
+            set("emiInterest", money.format((total - principal) || 0));
+            set("emiTotal", money.format(total || 0));
+        }
+
+        function calcSip() {
+            const monthly = value("sipMonthlyInput");
+            const months = value("sipYears") * 12;
+            const rate = value("sipRate") / 12 / 100;
+            const future = rate ? monthly * ((Math.pow(1 + rate, months) - 1) / rate) * (1 + rate) : monthly * months;
+            const invested = monthly * months;
+            set("sipInvested", money.format(invested));
+            set("sipReturns", money.format(future - invested));
+            set("sipFuture", money.format(future));
+        }
+
+        function calcGst() {
+            const amount = value("gstAmount");
+            const rate = value("gstRate") / 100;
+            const base = gstMode.value === "add" ? amount : amount / (1 + rate);
+            const tax = gstMode.value === "add" ? amount * rate : amount - base;
+            const final = gstMode.value === "add" ? amount + tax : amount;
+            set("gstBase", money.format(base));
+            set("gstTax", money.format(tax));
+            set("gstFinal", money.format(final));
+            set("gstSplit", `${money.format(tax / 2)} + ${money.format(tax / 2)}`);
+        }
+
+        function calcPercentage() {
+            const a = value("pctA");
+            const b = value("pctB");
+            const mode = pctMode.value;
+            const result = mode === "of" ? `${number.format((a / b) * 100)}%` : mode === "change" ? `${number.format(((b - a) / a) * 100)}%` : mode === "increase" ? number.format(b * (1 + a / 100)) : number.format(b * (1 - a / 100));
+            set("pctResult", result.includes("NaN") || result.includes("Infinity") ? "-" : result);
+        }
+
+        document.querySelectorAll("input, select").forEach((field) => field.addEventListener("input", runAll));
+        function runAll() { calcAge(); calcEmi(); calcSip(); calcGst(); calcPercentage(); }
+        runAll();
+    </script>
+</body>
+</html>

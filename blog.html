@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Android & App Publishing Blog | Rise Forge Works</title>
+    <meta name="description" content="Android and app publishing notes from Rise Forge Works, covering store readiness, privacy, permissions, and release quality.">
+    <link rel="canonical" href="https://riseforgework.studio/blog.html">
+    <style>
+        :root { --bg: #071018; --panel: #0d1b27; --text: #eef7fb; --muted: #abc0cc; --line: #28485a; --accent: #47c2a8; }
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: var(--text); background: #071018; }
+        .container { width: min(1120px, calc(100% - 2rem)); margin: 0 auto; }
+        header { padding: 1rem 0; border-bottom: 1px solid #183141; background: #09141d; position: sticky; top: 0; z-index: 5; }
+        nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+        a { color: inherit; }
+        .brand { display: inline-flex; align-items: center; gap: 0.6rem; font-weight: 800; text-decoration: none; }
+        .brand img { width: 38px; height: 38px; border-radius: 8px; object-fit: contain; background: #fff; }
+        .nav-links { display: flex; gap: 0.75rem; flex-wrap: wrap; color: var(--muted); font-weight: 700; }
+        .nav-links a { text-decoration: none; }
+        .hero { padding: 2.4rem 0 1rem; }
+        h1, h2, h3 { margin: 0; line-height: 1.1; }
+        h1 { font-size: clamp(2rem, 6vw, 3.8rem); max-width: 850px; }
+        .lead, p, li { color: var(--muted); line-height: 1.6; }
+        .posts { display: grid; gap: 1rem; padding-bottom: 2rem; }
+        article { border: 1px solid var(--line); background: linear-gradient(180deg, var(--panel), #0a1722); border-radius: 8px; padding: 1rem; }
+        time { color: #8fe4d2; font-weight: 800; font-size: 0.9rem; }
+        .tag { display: inline-flex; border: 1px solid #31576c; border-radius: 999px; padding: 0.25rem 0.55rem; color: #d6edf5; font-weight: 800; font-size: 0.75rem; margin-right: 0.35rem; }
+        footer { border-top: 1px solid #183141; color: var(--muted); padding: 1.2rem 0 1.6rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a class="brand" href="/"><img src="Rise%20Forge%20Works.png" alt="Rise Forge Works logo"><span>Rise Forge Works</span></a>
+            <div class="nav-links">
+                <a href="/calculators.html">Calculators</a>
+                <a href="/android-tools.html">Android Tools</a>
+                <a href="/apps.html">Apps</a>
+                <a href="/blog.html">Blog</a>
+            </div>
+        </nav>
+    </header>
+    <main class="container">
+        <section class="hero">
+            <h1>Android & app publishing notes.</h1>
+            <p class="lead">Practical guidance for preparing Android apps, policy pages, permissions, release quality, and store submissions.</p>
+        </section>
+        <section class="posts" aria-label="Blog posts">
+            <article>
+                <time datetime="2026-05-31">May 31, 2026</time>
+                <h2>Android Store Readiness Checklist</h2>
+                <p>Before publishing, verify your package name, signing key, app category, screenshots, feature graphic, privacy policy URL, support email, content rating, data safety answers, and closed testing feedback.</p>
+                <span class="tag">Publishing</span><span class="tag">Checklist</span>
+            </article>
+            <article>
+                <time datetime="2026-05-31">May 31, 2026</time>
+                <h2>Writing Clear Permission Explanations</h2>
+                <p>Permission prompts should connect directly to visible product features. Avoid requesting broad access during first launch when the permission is only needed later in a specific workflow.</p>
+                <span class="tag">Permissions</span><span class="tag">UX</span>
+            </article>
+            <article>
+                <time datetime="2026-05-31">May 31, 2026</time>
+                <h2>Privacy Policy Basics for Android Apps</h2>
+                <p>A useful policy states what data is collected, why it is used, which third-party services process it, how users can contact the developer, and how data retention is handled.</p>
+                <span class="tag">Privacy</span><span class="tag">Compliance</span>
+            </article>
+        </section>
+    </main>
+    <footer><div class="container">2026 Rise Forge Works. Articles are informational and should be reviewed for your exact app requirements.</div></footer>
+</body>
+</html>

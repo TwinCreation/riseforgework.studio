@@ -60,11 +60,23 @@
         }
 
         .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
             font-family: "Sora", sans-serif;
             font-weight: 800;
             letter-spacing: -0.04em;
             font-size: 1.15rem;
             color: #f3f8ff;
+            text-decoration: none;
+        }
+
+        .brand img {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            object-fit: contain;
+            background: #fff;
         }
 
         .brand b {
@@ -351,9 +363,16 @@
 <body>
     <div class="container nav-wrap reveal">
         <nav>
-            <div class="brand">Rise Forge <b>Works</b></div>
+            <a class="brand" href="/">
+                <img src="Rise%20Forge%20Works.png" alt="Rise Forge Works logo">
+                <span>Rise Forge <b>Works</b></span>
+            </a>
             <div class="nav-links">
                 <a href="#products">Products</a>
+                <a href="/calculators.html">Calculators</a>
+                <a href="/android-tools.html">Android Tools</a>
+                <a href="/apps.html">Apps</a>
+                <a href="/blog.html">Blog</a>
                 <a href="#services">Services</a>
                 <a href="#legal">Legal</a>
                 <a href="#contact">Contact</a>
@@ -372,6 +391,7 @@
                 </p>
                 <div class="hero-actions">
                     <a href="#products" class="btn btn-primary">View Products</a>
+                    <a href="/calculators.html" class="btn btn-secondary">Use Tools</a>
                 </div>
             </article>
             <aside class="metrics">
@@ -414,6 +434,30 @@
                     <p>Reusable modules for account, consent, and runtime permission orchestration.</p>
                     <span class="badge">Android SDK</span>
                     <span class="badge">Reusable Core</span>
+                </article>
+            </div>
+        </section>
+
+        <section id="tools" class="section reveal">
+            <div class="section-title">
+                <h2>Website Tools</h2>
+                <p>Free calculators, Android publishing helpers, app pages, and practical app publishing notes.</p>
+            </div>
+            <div class="cards-3">
+                <article class="card">
+                    <h3>Calculators</h3>
+                    <p>Age, EMI, SIP, GST, and percentage calculators for quick browser-based answers.</p>
+                    <a class="btn btn-secondary" href="/calculators.html">Open Calculators</a>
+                </article>
+                <article class="card">
+                    <h3>Android Tools</h3>
+                    <p>Generate privacy policy and terms drafts, and review Android permission guidance.</p>
+                    <a class="btn btn-secondary" href="/android-tools.html">Open Android Tools</a>
+                </article>
+                <article class="card">
+                    <h3>Apps and Blog</h3>
+                    <p>Browse Rise Forge Works apps and Android app publishing articles.</p>
+                    <a class="btn btn-secondary" href="/apps.html">View Apps</a>
                 </article>
             </div>
         </section>
